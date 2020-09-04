@@ -3,6 +3,7 @@ module.exports = {
     name: "userinfo",
     description: "da informacion sobre el usuario",
     execute(client, prefix, message, args) {
+			
  const badges = {
      DISCORD_PARTNER: '<:EVA_PARTNER:741710054880706631>',
      HYPESQUAD_EVENTS: '<a:EVA_HYPESQUADEVENTS:742808329209905332>',
@@ -33,7 +34,7 @@ function dias(date) {
 }
 //.toArray().length
  
-    let user =  message.mentions.members.first() || client.members.resolve(args[0]) || message.member
+    let user =  message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
 const presenciarikolina = PRESENCIA[user.presence.status]
 //user.flags ? (user.flags.toArray().map(...).join(", ") || "Ninguna") : "Ninguna"
 //user.flags.toArray().length ? user.flags.toArray().map(b => BADGES[b]).join(' , ') : "No tiene insignias"
@@ -50,7 +51,7 @@ const embedsinmencion = new Discord.MessageEmbed()
  .addField("Estado personalizado", customstatus)
  .addField("Creacion de la cuenta", `Hace ${dias(user.createdAt)}`)
  .addField("Entrada al servidor", `Hace ${dias(message.guild.member(user).joinedAt)}`)
- .addField("Insignias", user.flags.toArray().length < 1 ? 'No tiene' : user.flags.toArray().map(e => badges[e]).join(' '))
+ .addField('Insignias', `${user.flags.toArray().length < 1 ? `No tiene` : user.flags.toArray().map(e => badges[e]).join(' ')}`, true)
  .setColor("YELLOW")
  message.channel.send(embedsinmencion)
 
