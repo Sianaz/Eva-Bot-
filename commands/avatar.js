@@ -9,7 +9,7 @@ module.exports = {
     let pngg = user.avatarURL({format: 'png', dynamic: true, size: 1024})
 const embed = new Discord.MessageEmbed()
 .setTitle(`Foto de prefil de ${user.tag}`)
-.setDescription(`[JPEG](${jpegg}) [JPG](${jpgg}) [PNG](${pngg})`)
+.setDescription(`**[JPEG](${jpegg})** **[JPG](${jpgg})** **[PNG](${pngg})**`)
 .setImage(user.avatarURL({dynamic: true, size: 1024}))
 .setColor("RANDOM")
 message.channel.send(embed)
