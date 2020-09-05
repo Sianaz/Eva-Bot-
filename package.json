@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vitalets/google-translate-api": "^4.0.0",
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "google-it": "^1.5.0",
+    "mal-scraper": "^2.7.2",
     "marsnpm": "^0.5.1",
     "megadb": "^3.4.0",
     "quick.db": "^7.1.1"

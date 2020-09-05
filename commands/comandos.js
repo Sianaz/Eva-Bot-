@@ -1,31 +1,19 @@
+const Discord = require('discord.js')
 module.exports ={
-  name: "comandos",
+  name: "help",
   execute(client, prefix, message, args) {
-    const Discord = require('discord.js')
-const embed = new Discord.MessageEmbed()
+    //EMBED'S
+    const HELPEMBED = new Discord.MessageEmbed()
 .setTitle("Categorias de Comandos")
-.setDescription(`Usa \`${prefix}comandos <categoria>\` Para Ver los Comandos de las Categorias`)
-const dosembed = new Discord.MessageEmbed()
-.setTitle("PRUEBA")
-const tresembed = new Discord.MessageEmbed()
-.setTitle("PRUEBA")
-message.channel.send(embed).then(msg => {
-    msg.react('741705710697709619') 
-    msg.react('741705731992191157')
-    msg.react('741705769120170056') 
-    msg.awaitReactions((reaction, user) => { 
-        if (message.author.id !== user.id) return; 
-        if (reaction.emoji.name === '<:EVA_1:741705710697709619>') { 
-            msg.edit(embed)
-        }
-        if (reaction.emoji.name === '741705731992191157>') { 
-            msg.edit(dosembed)
-        }
-    if (reaction.emoji.name === '<:EVA_3:741705769120170056>') {
-      msg.edit(tresembed)
-}
-
-    })
-});
-  }
-}
+.setDescription(`Usa \`${prefix}help <categoria>\` Para Ver los Comandos de las Categorias\n\n**config:** Las configuraciones del bot para cada servidor\n**busqueda:** Comandos de todo tipo de búsqueda`)
+.setColor("#6ACAED")
+const CONFIGEMBED = new Discord.MessageEmbed()
+.setTitle("Comandos de Configuración (3 Comandos)")
+.setDescription(`**${prefix}setleave** [Canal de despedidas]\n**${prefix}setwelcome** [Canal de Bienvenidas]\n**${prefix}setprefix** [Nuevo prefijo]`)
+.setColor("#6ACAED")
+    if(args[0] == 'config') {
+      message.channel.send(CONFIGEMBED)
+} else {
+message.channel.send(HELPEMBED)
+} 
+}} 

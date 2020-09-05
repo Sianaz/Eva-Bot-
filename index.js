@@ -48,6 +48,8 @@ client.on('guildMemberAdd', async member => {
   .setFooter(`Bienvenido a ${member.guild.name}`)
   .setTimestamp()
   .setColor("#6ACAED")
+  if(!client.channels.cache.get(canal))return;
+
 if(!canal)return;
 client.channels.cache.get(canal).send(embed)
 });
@@ -64,6 +66,8 @@ client.on('guildMemberRemove', async member => {
   .setFooter(`${member.user.tag} Vuelve pronto :(`)
   .setTimestamp()
   .setColor("#6ACAED")
+    if(!client.channels.cache.get(canal))return;
+
 if(!canal)return;
 client.channels.cache.get(canal).send(embed)
 });
