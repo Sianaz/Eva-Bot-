@@ -1,15 +1,26 @@
 module.exports = {
-  name: "e", 
+  name: "eval",
+  aliases: ["e", "evalua"], 
 async execute(client, prefix, message, args) {
   const Discord = require('discord.js')
-    if(message.author.id !== "654158118137233428") return;
+  if(!["654158118137233428", "598550433421590544"].includes(message.author.id)) return;
+    //if(message.author.id !== ["654158118137233428", "598550433421590544"]) return 
     let code = args.join(' ')
     if(!code) return;
     try{
      let evaluado = await eval(code);
   let tipo = typeof(evaluado)
   let resultado = require("util").inspect(evaluado, { depth: 0 });
-
+const NOEMBED = new Discord.MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
+const NOMESSAGE = new Discord. MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
+.setColor("#EDE545")
+if(!message.channel.permissionsFor(message.guild.me).has('EMBED_LINKS')) return message.author.send(NOEMBED)
+if(!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return message.author.send(NOMESSAGE)
+ 
 const embed1 = new Discord.MessageEmbed()
 .addField("Tipo", `\`\`\`js\n${tipo}\`\`\``)
 .addField("Entrada", `\`\`\`js\n${args.join(' ')}\`\`\``)

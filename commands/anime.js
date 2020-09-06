@@ -1,5 +1,6 @@
 module.exports = {
   name: "anime", 
+  aliases: ["searchanime"],
   execute(client, prefix, message,args) {
     const {MessageEmbed} = require("discord.js")
 const mal = require("mal-scraper")

@@ -4,7 +4,17 @@ module.exports = {
     description: "da informacion sobre el usuario",
     aliases: ["u-i"],
     execute(client, prefix, message, args) {
-			
+      const NOEMBED = new MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
+const NOMESSAGE = new MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
+.setColor("#EDE545")
+if(!message.channel.permissionsFor(message.guild.me).has('EMBED_LINKS')) return message.author.send(NOEMBED)
+if(!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return message.author.send(NOMESSAGE)
+ 
+			//aliases: [""],
  const badges = {
      DISCORD_PARTNER: '<:EVA_PARTNER:741710054880706631>',
      HYPESQUAD_EVENTS: '<a:EVA_HYPESQUADEVENTS:742808329209905332>',

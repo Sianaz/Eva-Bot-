@@ -3,6 +3,16 @@ module.exports = {
 	name: 'help',
 	execute(client, prefix, message, args) {
 		//EMBED'S
+    const NOEMBED = new Discord. MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
+const NOMESSAGE = new Discord. MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
+.setColor("#EDE545")
+if(!message.channel.permissionsFor(message.guild.me).has('EMBED_LINKS')) return message.author.send(NOEMBED)
+if(!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return message.author.send(NOMESSAGE)
+ 
 		const HELPEMBED = new Discord.MessageEmbed()
 			.setTitle('Categorias de Comandos')
 			.setDescription(

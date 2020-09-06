@@ -11,6 +11,7 @@ const marsnpm = require('marsnpm')
 const db = require('quick.db')
 const db2 = require("megadb");
 let prefixdb = new db2.crearDB("Prefixes");
+const Zeew = require('zeew')
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -45,11 +46,12 @@ return;
  
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-if(!client.commands.has(command)) return;
 //client.commands.get(command).execute(client, prefix, message, arme) && client.comandos.find(x => x.alias.includes(client, prefix, message, args))
  //client.commands.get(command).execute(client, prefix, message, args)
  
-let cmd = client.commands.get(command) || client.commands.find(c => c.aliases.includes(command))
+let cmd = client.commands.get(command) || 
+  client.commands.find(c => c.aliases && c.aliases.includes(command))
+if(!cmd) return;
 cmd.execute(client, prefix, message, args)
 });
 client.on('guildMemberAdd', async member => {
@@ -57,11 +59,21 @@ client.on('guildMemberAdd', async member => {
   if(canal === null) {
     return;
   }
-  let imagen = await marsnpm.happy()
+  let wel = new Zeew.Bienvenida()
+  .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Im5hbWUiOiJ6ZWV3YXBpIn0sImlhdCI6MTU5NzEwMDc4OX0.E2lHiPcA1yqKqniVOuwuKL-uGMeiPUw0FSKUcXp_mXo")
+  .estilo("classic")
+  .avatar(member.user.avatarURL({format: 'jpg'}))
+  .fondo("https://cdn.discordapp.com/attachments/751585800839233657/752222154912825436/Maya-and-the-Three-2021-780x343.jpg")
+  .colorTit("#FF3DB0")
+  .titulo(`Bienvenido a ${member.guild.name}`)
+  .colorDesc("#fff")
+  .descripcion(`Tenemos un nuevo miembro`);
+ 
+let imgg = await Zeew.WelcomeZeew(wel);
   const embed = new Discord.MessageEmbed()
   .setThumbnail(member.user.avatarURL({dynamic: true}))
   .setTitle(`¡Tenemos un nuevo miembro!, Denle la Bienvenida a ${member.user.tag}`)
-  .setImage(imagen)
+  .setImage(imgg)
   .setFooter(`Bienvenido a ${member.guild.name}`)
   .setTimestamp()
   .setColor("#6ACAED")

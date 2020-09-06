@@ -5,11 +5,21 @@ module.exports = {
        const Discord = require("discord.js")
     const db = require('quick.db')
        let channel =  message.mentions.channels.first()
+       const NOEMBED = new MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
+const NOMESSAGE = new MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
+.setColor("#EDE545")
+if(!message.channel.permissionsFor(message.guild.me).has('EMBED_LINKS')) return message.author.send(NOEMBED)
+if(!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return message.author.send(NOMESSAGE)
+ 
        const NOADMIN = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
-.setDescription("¡Oh no!, Debes tener permisos de administrador")
+.setDescription("¡Oh no!, Debes tener permisos de gestionar servidor")
 .setColor("#EDE545")
- if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(NOADMIN);
+ if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(NOADMIN);
 const ERROR = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription("¡Oh no!, Debe mencionar un canal")

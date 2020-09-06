@@ -7,11 +7,21 @@ const db2 = require("megadb");
 let prefixdb = new db2.crearDB("Prefixes");
 
 let prefixchiquito = args.join(" ");
+const NOEMBED = new MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
+const NOMESSAGE = new MessageEmbed()
+.setTitle(":warning: - Error")
+.setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
+.setColor("#EDE545")
+if(!message.channel.permissionsFor(message.guild.me).has('EMBED_LINKS')) return message.author.send(NOEMBED)
+if(!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return message.author.send(NOMESSAGE)
+ 
 const NOADMIN = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
-.setDescription("¡Oh no!, Debes tener permisos de administrador")
+.setDescription("¡Oh no!, Debes tener permisos de gestionar servidor")
 .setColor("#EDE545")
- if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(NOADMIN);
+ if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send(NOADMIN);
 
 const NOPREFIX = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")

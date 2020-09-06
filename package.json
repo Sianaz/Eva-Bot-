@@ -18,6 +18,7 @@
     "mal-scraper": "^2.7.2",
     "marsnpm": "^0.5.1",
     "megadb": "^3.4.0",
-    "quick.db": "^7.1.1"
+    "quick.db": "^7.1.1",
+    "zeew": "^0.1.8"
   }
 }
