@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 module.exports = {
     name: "userinfo",
     description: "da informacion sobre el usuario",
+    aliases: ["u-i"],
     execute(client, prefix, message, args) {
 			
  const badges = {

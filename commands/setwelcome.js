@@ -12,7 +12,7 @@ module.exports = {
  if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(NOADMIN);
 const ERROR = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
-.setDescription("¡Oh no!, Debe colocar la ID de un canal o mencionarlo")
+.setDescription("¡Oh no!, Debe mencionar un canal")
 .setColor("#EDE545")
     if(!channel)return message.channel.send(ERROR)
     const NOVIEW = new Discord.MessageEmbed()
@@ -23,7 +23,7 @@ const ERROR = new Discord.MessageEmbed()
     db.set(`welchannel_${message.guild.id}`, channel.id)
   const EMBED = new Discord.MessageEmbed()
   .setTitle(":white_check_mark: - Perfecto")
-  .setDescription(`${channel.name} Se ha establecido como canal de bienvenidas`)
+  .setDescription(`\`${channel.name}\` Se ha establecido como canal de bienvenidas`)
   .setColor("#0CFF00")
    message.channel.send(EMBED)
   }};

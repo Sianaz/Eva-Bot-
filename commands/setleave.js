@@ -23,7 +23,7 @@ const ERROR = new Discord.MessageEmbed()
     db.set(`leavechannel_${message.guild.id}`, channel.id)
   const EMBED = new Discord.MessageEmbed()
   .setTitle(":white_check_mark: - Perfecto")
-  .setDescription(`${channel} Se ha establecido como canal de despedidas`)
+  .setDescription(`\`${channel.name}\` Se ha establecido como canal de despedidas`)
   .setColor("#0CFF00")
    message.channel.send(EMBED)
   }};

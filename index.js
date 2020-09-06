@@ -27,13 +27,30 @@ client.on('ready', () => {
     let status = statuses[Math.floor(Math.random() * statuses.length)]
     client.user.setActivity(status, {type: 'WATCHING'})}, 20000)
 });
+
+
 client.on('message', async message => {
   let prefix = prefixdb.has(message.guild.id) ? await prefixdb.get(message.guild.id) : "e!"
+  if(message.author.bot)return;
+const MENCIONABB = new Discord.MessageEmbed()
+ .setDescription(`!Que onda **${message.author.tag}**!, Mi prefix en **${message.guild.name}** es \`${prefix}\``)
+.setColor("#6ACAED")
+  if(message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`){
+message.channel.send(MENCIONABB)
+return;
+}
+
      if (!message.content.startsWith(prefix) || message.author.bot) return;
+   
+ 
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 if(!client.commands.has(command)) return;
-client.commands.get(command).execute(client, prefix, message, args)
+//client.commands.get(command).execute(client, prefix, message, arme) && client.comandos.find(x => x.alias.includes(client, prefix, message, args))
+ //client.commands.get(command).execute(client, prefix, message, args)
+ 
+let cmd = client.commands.get(command) || client.commands.find(c => c.aliases.includes(command))
+cmd.execute(client, prefix, message, args)
 });
 client.on('guildMemberAdd', async member => {
   let canal = db.get(`welchannel_${member.guild.id}`)
