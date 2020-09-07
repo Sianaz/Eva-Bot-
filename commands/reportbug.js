@@ -4,10 +4,10 @@ module.exports = {
   execute(client, prefix, message, args) {
     const Discord = require('discord.js')
     const bug = args.join(" ").split(" | ")
-    const NOEMBED = new MessageEmbed()
+    const NOEMBED = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
-const NOMESSAGE = new MessageEmbed()
+const NOMESSAGE = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
 .setColor("#EDE545")

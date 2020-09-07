@@ -3,10 +3,10 @@ module.exports = {
 	name: 'help',
 	execute(client, prefix, message, args) {
 		//EMBED'S
-    const NOEMBED = new Discord. MessageEmbed()
+    const NOEMBED = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
-const NOMESSAGE = new Discord. MessageEmbed()
+const NOMESSAGE = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
 .setColor("#EDE545")
