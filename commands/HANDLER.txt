@@ -1,0 +1,33 @@
+const fs = require('fs');
+const Discord = require('discord.js');
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+      console.log(`Comando ${command.name} Listo.`)
+}
+client.on('ready', () => {
+  console.log(`Soy ${client.user.username} Estoy Activo, ${client.guilds.cache.size} Servidores, ${client.users.cache.size} Usuarios`)
+  let statuses = ["]
+  setInterval(function() {
+    let status = statuses[Math.floor(Math.random() * statuses.length)]
+    client.user.setActivity(status, {type: 'WATCHING'})}, 20000)
+});
+
+
+client.on('message', async message => {
+  let prefix = "";
+     if (!message.content.startsWith(prefix) || message.author.bot) return;
+   
+ 
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+ 
+let cmd = client.commands.get(command) || 
+  client.commands.find(c => c.aliases && c.aliases.includes(command))
+if(!cmd) return;
+cmd.execute(client, prefix, message, args)
+});

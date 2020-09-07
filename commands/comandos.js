@@ -26,12 +26,13 @@ if(!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) retur
 			)
 			.setColor('#6ACAED');
 		if (args[0] == 'config') {
+
 			message.channel.send(CONFIGEMBED);
 		} else {
-			message.channel.send(HELPEMBED);
-		}
-		message.author.send(
+                  		message.author.send(
 			`\`\`\`Para ayuda mas detallada mira los siguientes links: \`\`\`\n\n**Sitio Web:**\nProximamente\n\n**Soporte:**\nhttps://discord.gg/EQnEyNw\n\n**Donar:**\nhttps://patreon.com/EvaBot`
 		);
+			message.channel.send(HELPEMBED);
+		}
 	}
 };

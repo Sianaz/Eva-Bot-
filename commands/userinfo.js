@@ -4,10 +4,10 @@ module.exports = {
     description: "da informacion sobre el usuario",
     aliases: ["u-i"],
     execute(client, prefix, message, args) {
-      const NOEMBED = new MessageEmbed()
+      const NOEMBED = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
-const NOMESSAGE = new MessageEmbed()
+const NOMESSAGE = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
 .setColor("#EDE545")
@@ -45,15 +45,20 @@ function dias(date) {
 }
 //.toArray().length
  
-    let user =  message.mentions.users.first() || client.users.cache.get(args[0]) ||message.author;
+    let user =  message.mentions.users.first() || client.users.cache.get(args[0]) || message.author;
 const presenciarikolina = PRESENCIA[user.presence.status]
 //user.flags ? (user.flags.toArray().map(...).join(", ") || "Ninguna") : "Ninguna"
 //user.flags.toArray().length ? user.flags.toArray().map(b => BADGES[b]).join(' , ') : "No tiene insignias"
 const eribot = user.bot ? "Si" : "No"
 const customstatus = user.presence.activities[0] ? user.presence.activities[0].state : "Nada"
-const avataruwu = user.avatarURL({ dynamic: true})
+var rles;
+if(user.roles.cache.size < 5) {
+rles= user.roles.cache.map(x => `<@&${x.id}>`).join(" | ")
+} else {
+rles = user.roles.cache.map(x => `<@&${x.id}>`).slice(0, 5).join(" | ") + ` +${user.roles.cache.size-1}`
+}
 const embedsinmencion = new Discord.MessageEmbed()
-.setThumbnail(user.avatarURL({dynamic : true}))
+.setThumbnail(user.avatarURL())
  .setTitle(`Informacion sobre ${user.username}`)
  .addField("Nombre y Discriminador", user.tag)
  .addField("ID", user.id)

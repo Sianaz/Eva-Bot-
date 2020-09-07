@@ -59,6 +59,7 @@ client.on('guildMemberAdd', async member => {
   if(canal === null) {
     return;
   }
+  /*
   let wel = new Zeew.Bienvenida()
   .token("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7Im5hbWUiOiJ6ZWV3YXBpIn0sImlhdCI6MTU5NzEwMDc4OX0.E2lHiPcA1yqKqniVOuwuKL-uGMeiPUw0FSKUcXp_mXo")
   .estilo("classic")
@@ -70,6 +71,7 @@ client.on('guildMemberAdd', async member => {
   .descripcion(`Tenemos un nuevo miembro`);
  
 let imgg = await Zeew.WelcomeZeew(wel);
+*/
   const embed = new Discord.MessageEmbed()
   .setThumbnail(member.user.avatarURL({dynamic: true}))
   .setTitle(`¡Tenemos un nuevo miembro!, Denle la Bienvenida a ${member.user.tag}`)

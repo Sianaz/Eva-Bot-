@@ -7,10 +7,10 @@ const db2 = require("megadb");
 let prefixdb = new db2.crearDB("Prefixes");
 
 let prefixchiquito = args.join(" ");
-const NOEMBED = new MessageEmbed()
+const NOEMBED = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar embeds en ${message.channel}`)
-const NOMESSAGE = new MessageEmbed()
+const NOMESSAGE = new Discord.MessageEmbed()
 .setTitle(":warning: - Error")
 .setDescription(`¡Oh no!, Debo tener permisos de enviar mensajes en ${message.channel}`)
 .setColor("#EDE545")
