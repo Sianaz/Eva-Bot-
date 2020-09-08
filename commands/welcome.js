@@ -16,18 +16,20 @@ let avatar = message.member.user.avatarURL({size: 128, format: 'png'})
     ctx.fillStyle = '#fff'
     ctx.textAlign = 'center'
     ctx.fillText(`Bienvenido a ${message.guild.name}`, canvas.width/2, 60)
+    ctx.strokeText(`Bienvenido a ${message.guild.name}`, canvas.width/2, 60)
 
     ctx.font = '43px Uni'
     ctx.fillStyle = '#fff'
     ctx.textAlign = 'center'
     ctx.fillText(`${message.member.user.tag}`, canvas.width/2, +379)
+      ctx.strokeText(`${message.member.user.tag}`, canvas.width/2, +379)
     ctx.beginPath()
   
 
     const y= 100, radio= 85, x=canvas.width/2-radio
 
 ctx.beginPath()
-ctx.arc(canvas.width/2, 185, 90, 0, Math.PI * 2)
+ctx.arc(canvas.width/2, 220, 90, 0, Math.PI * 2)
 ctx.fillStyle = "#fff"
 ctx.fill()
 ctx.stroke()
@@ -35,13 +37,14 @@ ctx.closePath()
 
 ctx.save()
 ctx.beginPath()
-ctx.arc(canvas.width/2, 185, 85, 0, Math.PI * 2, true)
+ctx.arc(canvas.width/2, 220, 85, 0, Math.PI * 2, true)
 ctx.fillStyle = "#fff"
 ctx.closePath()
 ctx.clip()
-
+//canvas.width/2, 220, 85, 0
+//canvas.width/2, 100, 170, 170
         let imagen = await Canvas.loadImage(avatar)
-    ctx.drawImage(imagen, x, y, radio*2, radio*2)
+    ctx.drawImage(imagen, canvas.width/2.6, 130, 175, 175)
     let img = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome.png')
   const embed = new Discord.MessageEmbed()
  .attachFiles(img)

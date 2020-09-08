@@ -59,7 +59,7 @@ console.log(e.stack)
 }).then(() => {
 setTimeout(() => {
                 m.edit(YESPREFIX)
-            }, 10000)
+            }, 1000)
 })
 })
   }
